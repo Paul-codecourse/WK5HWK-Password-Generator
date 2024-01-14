@@ -57,7 +57,7 @@ var lowerCasedCharacters = [
   'y',
   'z'
 ];
-
+var pCharacters=(upperCasedCharacters+lowerCasedCharacters+specialCharacters+numericCharacters)
 // Array of uppercase characters to be included in password
 var upperCasedCharacters = [
   'A',
@@ -87,7 +87,18 @@ var upperCasedCharacters = [
   'Y',
   'Z'
 ];
-let passwordLength="0"
+
+// Array of names of arrays
+var complexArr = [
+'complexityUpper', 'complexityLower', 'complexityNum', 'complexitySpec'
+];
+
+let passwordLength="0";
+let complexityUpper="0";
+let complexityLower="0";
+let complexityNum="0";
+let complexitySpec="0";
+
 // Function to prompt user for password options
 function getPasswordOptions() {
 
@@ -108,7 +119,6 @@ function getPasswordOptions() {
   // need to examine NaN issues with above
   //prompt to choose complexity Lowercase, Uppercase, Numeric, Special Characters
   var complexityLower = window.prompt("Password complexity. Do you want the password to contain lowercase letters? Please answer Y for yes and N for no.", "Y");
- 
   var complexityUpper = confirm("Password complexity. Do you want the password to contain uppercase letters? Please answer OK for yes and cancel for no.");
   var complexityNum = confirm("Password complexity. Do you want the password to contain numbers? Please answer OK for yes and cancel for no.");
   var complexitySpec = confirm("Password complexity. Do you want the password to contain special characters? Please answer OK for yes and cancel for no.");
@@ -119,17 +129,40 @@ function getPasswordOptions() {
 
 }
 // Function for getting a random element from an array
-function getRandom(arr) {
-  if (complexityUpper === true) {
-    
-
+function getRandom(complexArr) {
+complexityLower=true;
+complexityNum=true;
+complexitySpec=true;
+complexityUpper=true;
+ //testing complexityUpper=true //scope error?
+/*  console.log("complexityUpper = " + complexityUpper)
+  console.log(upperCasedCharacters[9])
+  console.log(upperCasedCharacters[(parseInt(Math.random() * upperCasedCharacters.length))]);
+  console.log(parseInt(Math.random() * 26))
+  console.log(upperCasedCharacters.length) */
+ //testing if (complexityUpper === true) {
+ // testing   console.log(upperCasedCharacters[(parseInt(Math.random() * upperCasedCharacters.length))]);
+    // add randomising array process
+    console.log(complexArr[3]);
+ if ((complexArr[(parseInt(Math.random() * complexArr.length))]) === true) { //randomises the array password element is extracted from 
+  console.log(complexArr);
+ }
   }
 
-}
+
 
 // Function to generate password with user input
 function generatePassword() {
-
+  //Generate random password
+  //var pCharacters = ['f', 'D', 'r', 'Z', 'X'];
+  password='';
+  {
+    for (let i=0; i < 15; i++) {
+      const randomindex = Math.floor(Math.random() * pCharacters.length);
+      password += pCharacters[randomindex];
+      }
+    console.log(password)
+  }
 }
 
 // Get references to the #generate element
