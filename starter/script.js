@@ -57,7 +57,6 @@ var lowerCasedCharacters = [
   'y',
   'z'
 ];
-var pCharacters=(upperCasedCharacters+lowerCasedCharacters+specialCharacters+numericCharacters)
 // Array of uppercase characters to be included in password
 var upperCasedCharacters = [
   'A',
@@ -87,7 +86,7 @@ var upperCasedCharacters = [
   'Y',
   'Z'
 ];
-
+var pCharacters=(upperCasedCharacters+lowerCasedCharacters+specialCharacters+numericCharacters)
 // Array of names of arrays
 var complexArr = [
 'complexityUpper', 'complexityLower', 'complexityNum', 'complexitySpec'
@@ -100,7 +99,7 @@ let complexityNum="0";
 let complexitySpec="0";
 
 // Function to prompt user for password options
-function getPasswordOptions() {
+function getPasswordOptions(pCharacters) {
 
   //prompt for password length between 8 and 128 characters
   passwordLength = parseInt(window.prompt("enter a number between 8 and 128", 67));
@@ -122,11 +121,25 @@ function getPasswordOptions() {
   var complexityUpper = confirm("Password complexity. Do you want the password to contain uppercase letters? Please answer OK for yes and cancel for no.");
   var complexityNum = confirm("Password complexity. Do you want the password to contain numbers? Please answer OK for yes and cancel for no.");
   var complexitySpec = confirm("Password complexity. Do you want the password to contain special characters? Please answer OK for yes and cancel for no.");
-  console.log(complexityLower)
-  console.log(complexityUpper)
-  console.log(complexityNum)
-  console.log(complexitySpec)
-
+  console.log('Password containing Lowercase letters? ' + complexityLower)
+  console.log('Uppercase letters? ' + complexityUpper)
+  console.log('Numbers? ' + complexityNum)
+  console.log('Special Characters? ' + complexitySpec)
+  pCharacters='';
+  if (complexityLower = "Y") {
+    pCharacters = (pCharacters+lowerCasedCharacters);
+  } else {} // else do nthing and move on doesn't work
+  if (complexityUpper = true) {
+    pCharacters = (pCharacters+upperCasedCharacters);
+  } else if (complexityUpper = false) {} // else do nthing and move on doesn't work
+  if (complexityNum=true) {
+    pCharacters=(pCharacters+numericCharacters);
+  } else if (complexityNum=false) {} // else do nthing and move on doesn't work
+  if (complexitySpec=true) {
+    pCharacters=(pCharacters+specialCharacters)
+  } else if (complexitySpec){} // else do nthing and move on doesn't work
+  console.log=(pCharacters)
+  return (pCharacters, passwordLength)
 }
 // Function for getting a random element from an array
 function getRandom(complexArr) {
@@ -147,7 +160,7 @@ complexityUpper=true;
  if ((complexArr[(parseInt(Math.random() * complexArr.length))]) === true) { //randomises the array password element is extracted from 
   console.log(complexArr);
  }
-  }
+}
 
 
 
@@ -169,7 +182,7 @@ function generatePassword() {
 var generateBtn = document.querySelector('#generate');
 
 // Write password to the #password input
-function writePassword() {
+function writePassword(password) {
   var password = generatePassword();
   var passwordText = document.querySelector('#password');
 
